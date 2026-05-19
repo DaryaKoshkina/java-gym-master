@@ -48,4 +48,11 @@ public class Timetable {
 
         return sessions;
     }
+
+    public ArrayList<Coach> getSortedCoaches() {
+        CounterOfTrainings counterOfTrainings = new CounterOfTrainings();
+// Заполнить counterOfTrainings передавая Коуча циклом в цикле
+        // Вызвать у counterOfTraining
+        return counterOfTrainings.getSortedCoaches();
+    }
 }
