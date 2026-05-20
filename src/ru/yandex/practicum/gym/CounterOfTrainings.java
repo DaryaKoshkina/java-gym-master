@@ -22,6 +22,9 @@ public class CounterOfTrainings {
     }
 
     public ArrayList<Coach> getSortedCoaches() {
-        return new ArrayList<>();
+        ArrayList<Coach> sortedCoaches =  new ArrayList<>(coachMap.keySet());
+        CoachTrainingsComparator coachComparator = new CoachTrainingsComparator(coachMap);
+        sortedCoaches.sort(coachComparator);
+        return sortedCoaches;
     }
 }

@@ -9,19 +9,16 @@ public class Timetable {
         DayOfWeek day = trainingSession.getDayOfWeek();
         TimeOfDay time = trainingSession.getTimeOfDay();
 
-        // 1. Если дня еще нет, создаем для него TreeMap
         if (!timetable.containsKey(day)) {
             timetable.put(day, new TreeMap<>());
         }
 
         TreeMap<TimeOfDay, List<TrainingSession>> dayMap = timetable.get(day);
 
-        // 2. Если на это время еще нет тренировок, создаем новый список ArrayList
         if (!dayMap.containsKey(time)) {
             dayMap.put(time, new ArrayList<>());
         }
 
-        // 3. Добавляем тренировку в список для этого времени
         dayMap.get(time).add(trainingSession);
     }
 
@@ -51,6 +48,16 @@ public class Timetable {
 
     public ArrayList<Coach> getSortedCoaches() {
         CounterOfTrainings counterOfTrainings = new CounterOfTrainings();
+        for (DayOfWeek day : timetable.keySet()) {
+            TreeMap<TimeOfDay, List<TrainingSession>> dailySchedule = timetable.get(day);
+            if (dailySchedule != null) {
+                for (List<TrainingSession> sessions : dailySchedule.values()) {
+                    for(TrainingSession session : sessions) {
+                        counterOfTrainings.addCoachToMap(session.getCoach());
+                    }
+                }
+            }
+        }
 // Заполнить counterOfTrainings передавая Коуча циклом в цикле
         // Вызвать у counterOfTraining
         return counterOfTrainings.getSortedCoaches();
