@@ -15,8 +15,8 @@ public class CounterOfTrainings {
         this.coachMap = coachMap;
     }
 
-    public void addCoachToMap(Coach coach){
-        if(coachMap.containsKey(coach)) {
+    public void addCoachToMap(Coach coach) {
+        if (coachMap.containsKey(coach)) {
             coachMap.replace(coach, coachMap.get(coach) + 1);
         } else coachMap.put(coach,1);
     }
