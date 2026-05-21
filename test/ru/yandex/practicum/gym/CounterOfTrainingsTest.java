@@ -26,9 +26,16 @@ public class CounterOfTrainingsTest {
 
     @Test
     void testAddCoachToCounter() {
-        // Проверить, что каунтер стал 1
         assertTrue(counter.getCoachMap().containsKey(coach));
         assertEquals(1, counter.getCoachMap().get(coach));
+    }
+
+    @Test
+    void testAddExistCoachToCounter() {
+        counter.addCoachToMap(coach);
+        counter.addCoachToMap(coach);
+        assertTrue(counter.getCoachMap().containsKey(coach));
+        assertEquals(3, counter.getCoachMap().get(coach));
     }
 
     @Test
@@ -52,25 +59,4 @@ public class CounterOfTrainingsTest {
         assertEquals(coach, sortedCoach.get(1));
     }
 
-    @Test
-    void testCounterFroLowestToHigh(){
-        Coach coach2 = new Coach("Петрова", "Анна", "Валерьевна");
-        Group groupChild = new Group("Акробатика для детей", Age.CHILD, 60);
-        TrainingSession mondayChildTrainingSession = new TrainingSession(groupChild, coach2,
-                DayOfWeek.MONDAY, new TimeOfDay(15, 0));
-        TrainingSession thursdayChildTrainingSession = new TrainingSession(groupChild, coach2,
-                DayOfWeek.THURSDAY, new TimeOfDay(17, 0));
-        TrainingSession saturdayChildTrainingSession = new TrainingSession(groupChild, coach2,
-                DayOfWeek.SATURDAY, new TimeOfDay(18, 0));
-        timetable.addNewTrainingSession(mondayChildTrainingSession);
-        timetable.addNewTrainingSession(thursdayChildTrainingSession);
-        timetable.addNewTrainingSession(saturdayChildTrainingSession);
-        counter.addCoachToMap(coach2);
-        counter.addCoachToMap(coach2);
-        counter.addCoachToMap(coach2);
-
-        ArrayList<Coach> sortedCoach = counter.getSortedCoaches();
-        assertEquals(coach2, sortedCoach.get(0));
-        assertEquals(coach, sortedCoach.get(1));
-    }
 }
