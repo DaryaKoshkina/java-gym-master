@@ -5,6 +5,7 @@ import java.util.*;
 public class Timetable {
 
     private final Map<DayOfWeek, TreeMap<TimeOfDay, List<TrainingSession>>> timetable  = new HashMap<>();
+
     public void addNewTrainingSession(TrainingSession trainingSession) {
         DayOfWeek day = trainingSession.getDayOfWeek();
         TimeOfDay time = trainingSession.getTimeOfDay();
@@ -52,7 +53,7 @@ public class Timetable {
             TreeMap<TimeOfDay, List<TrainingSession>> dailySchedule = timetable.get(day);
             if (dailySchedule != null) {
                 for (List<TrainingSession> sessions : dailySchedule.values()) {
-                    for(TrainingSession session : sessions) {
+                    for (TrainingSession session : sessions) {
                         counterOfTrainings.addCoachToMap(session.getCoach());
                     }
                 }
