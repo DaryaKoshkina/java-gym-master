@@ -58,8 +58,6 @@ public class Timetable {
                 }
             }
         }
-// Заполнить counterOfTrainings передавая Коуча циклом в цикле
-        // Вызвать у counterOfTraining
         return counterOfTrainings.getSortedCoaches();
     }
 }
